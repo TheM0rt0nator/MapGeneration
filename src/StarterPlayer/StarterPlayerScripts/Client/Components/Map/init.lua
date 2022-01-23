@@ -1,6 +1,5 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local Camera = workspace.CurrentCamera
 local Shared = ReplicatedStorage.Shared
 
 local Lib = ReplicatedStorage.Libraries
@@ -21,6 +20,7 @@ function Map:render()
 	local mapTiles = {}
 
 	local tileWidth = math.min(1 / CONFIG.width, 1 / CONFIG.height)
+	-- Loop through the generated map and create a tile for each pixel, with the generated tile type
 	for index, tile in pairs(self.state.map) do
 		local lastIndex = index - 1
 		local currentRow = math.floor(lastIndex / CONFIG.width)
@@ -52,6 +52,7 @@ function Map:render()
 			AnchorPoint = Vector2.new(0.5, 0.5);
 			Text = "Generate";
 			[Roact.Event.MouseButton1Click] = function()
+				-- Re-render the map with the new map
 				self:setState({
 					map = MapGenerator:generate()
 				})

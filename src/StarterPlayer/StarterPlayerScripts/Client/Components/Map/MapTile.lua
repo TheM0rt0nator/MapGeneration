@@ -5,6 +5,7 @@ local Roact = require(Lib.Roact)
 
 local MapTile = Roact.Component:extend("MapTile")
 
+-- These names need to match up with the tiles in the CONFIG module
 local tileColors = {
 	Water = Color3.fromRGB(43, 64, 255);
 	Sand = Color3.fromRGB(255, 243, 135);
